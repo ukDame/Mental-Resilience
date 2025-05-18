@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Resilience - Strengthening Your Inner Resolve</title>
+    <style>
+        :root {
+            --primary-color: #a8d0e6; /* Pale Blue */
+            --secondary-color: #7aa6c4;
+            --accent-color: #d4e6f1;
+            --light-color: #f0f8ff;
+            --dark-color: #3a5468;
+            --success-color: #88b4a8;
+        }
+        
+        /* PALE BLUE BANNER */
+        .checklist-banner {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            padding: 25px 0;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin: -30px -30px 25px -30px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        .checklist-banner h1 {
+            color: var(--dark-color);
+            margin: 0;
+            font-size: 1.8em;
+            letter-spacing: 0.5px;
+        }
+        .checklist-banner .subtitle {
+            color: var(--dark-color);
+            margin: 8px 0 0;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5fafd;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            background-color: var(--light-color);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .checklist-item:hover {
+            background-color: rgba(168, 208, 230, 0.1);
+        }
+        
+        .checklist-item input[type="checkbox"] {
+            margin-right: 15px;
+            transform: scale(1.3);
+            cursor: pointer;
+            margin-top: 3px;
+        }
+        
+        .checklist-text {
+            flex-grow: 1;
+        }
+        
+        .checklist-item label {
+            cursor: pointer;
+            display: block;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .notes-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--secondary-color);
+            font-size: 1.1em;
+            margin-left: 10px;
+            padding: 5px;
+        }
+        
+        .notes-btn:hover {
+            color: var(--dark-color);
+        }
+        
+        .notes-box {
+            display: none;
+            width: 100%;
+            margin-top: 10px;
+            margin-left: 30px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .notes-box h4 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            font-size: 0.9em;
+        }
+        
+        .notes-box textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--accent-color);
+            border-radius: 5px;
+            min-height: 80px;
+            font-family: inherit;
+            resize: vertical;
+        }
+        
+        .progress-container {
+            margin: 30px 0;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--success-color);
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .progress-text {
+            text-align: center;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .reflection {
+            margin-top: 30px;
+        }
+        
+        .reflection h3 {
+            margin-bottom: 10px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--accent-color);
+            border-radius: 5px;
+            min-height: 100px;
+            margin-bottom: 15px;
+            font-family: inherit;
+        }
+        
+        .celebration {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: var(--success-color);
+            color: white;
+            border-radius: 8px;
+            margin: 30px 0;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--dark-color);
+        }
+        
+        .reset-btn {
+            background-color: #9ab7c9;
+        }
+        
+        .print-btn {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+        }
+        
+        .instructions {
+            font-size: 0.9em;
+            color: var(--secondary-color);
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+            
+            .checklist-banner {
+                margin: -15px -15px 15px -15px;
+                padding: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PALE BLUE BANNER -->
+        <div class="checklist-banner">
+            <h1>MENTAL RESILIENCE</h1>
+            <p class="subtitle">10 Daily Habits for Inner Strength</p>
+        </div>
+
+        <div class="progress-text">Progress: <span id="progress-percent">0</span>%</div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar">0%</div>
+        </div>
+        
+        <div class="celebration" id="celebration">
+            <h2>💪 Resilience Strengthened! 💪</h2>
+            <p>You've completed your daily resilience practice!</p>
+            <p><em>"Resilience isn't toughness. It's learning to bend without breaking."</em></p>
+        </div>
+        
+        <div class="section">
+            <h2>Morning Habits</h2>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="item1">
+                <div class="checklist-text">
+                    <label for="item1">Begin your day with one powerful thought or affirmation</label>
+                    <div class="notes-box" id="notes1">
+                        <h4>My Practice:</h4>
+                        <textarea placeholder="Today's affirmation is...&#10;&#10;Where I'll place it (mirror/phone/etc):"></textarea>
+                    </div>
+                </div>
+                <button class="notes-btn" onclick="toggleNotes('notes1')">📝 Plan</button>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="item2">
+                <div class="checklist-text">
+                    <label for="item2">Identify one challenge from yesterday and one thing you did well</label>
+                    <div class="notes-box" id="notes2">
+                        <h4>My Reflection:</h4>
+                        <textarea placeholder="Yesterday's challenge:&#10;&#10;What I did well:"></textarea>
+                    </div>
+                </div>
+                <button class="notes-btn" onclick="toggleNotes('notes2')">📝 Plan</button>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="item3">
+                <div class="checklist-text">
+                    <label for="item3">Move your body: even a 5-minute stretch counts</label>
+                    <div class="notes-box" id="notes3">
+                        <h4>My Movement Plan:</h4>
+                        <textarea placeholder="Today I'll move by...&#10;&#10;Best time for me:"></textarea>
+                    </div>
+                </div>
+                <button class="notes-btn" onclick="toggleNotes('notes3')">📝 Plan</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Daytime Practices</h2>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="item4">
+                <div class="checklist-text">
+                    <label for="item4">Take a break from news/social media for 30 minutes</label>
+                    <div class="notes-box" id="notes4">
+                        <h4>My Digital Break Plan:</h4>
+                        <textarea placeholder="I'll avoid...&#10;&#10;During this time I'll instead..."></textarea>
+                    </div>
+                </div>
+                <button class="notes-btn" onclick="toggleNotes('notes4')">📝 Plan</button>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="item5">
+                <div class="checklist-text">
+                    <label for="item5">Breathe deeply for 1 minute when stress builds</label>
+                    <div class="notes-box" id="notes5">
+                        <h4>My Breathing Strategy:</h4>
+                        <textarea placeholder="My stress signal is...&#10;&#10;Breathing technique I'll use:"></textarea>
+                    </div>
+                </div>
+                <button class="notes-btn" onclick="toggleNotes('notes5')">📝 Plan</button>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="item6">
+                <div class="checklist-text">
+                    <label for="item6">Ask yourself, "What can I control right now?"</label>
+                    <div class="notes-box" id="notes6">
+                        <h4>My Control Focus:</h4>
+                        <textarea placeholder="Current worry:&#10;&#10;What's actually within my control:"></textarea>
+                    </div>
+                </div>
+                <button class="notes-btn" onclick="toggleNotes('notes6')">📝 Plan</button>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="item7">
+                <div class="checklist-text">
+                    <label for="item7">Write down three small wins or moments of strength</label>
+                    <div class="notes-box" id="notes7">
+                        <h4>Today's Wins:</h4>
+                        <textarea placeholder="1.&#10;2.&#10;3."></textarea>
+                    </div>
+                </div>
+                <button class="notes-btn" onclick="toggleNotes('notes7')">📝 Plan</button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Evening Reflections</h2>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="item8">
+                <div class="checklist-text">
+                    <label for="item8">Practice saying "no" without guilt when you need rest</label>
+                    <div class="notes-box" id="notes8">
+                        <h4>My Boundary Practice:</h4>
+                        <textarea placeholder="Opportunity to say no today:&#10;&#10;How I'll phrase it kindly:"></textarea>
+                    </div>
+                </div>
+                <button class="notes-btn" onclick="toggleNotes('notes8')">📝 Plan</button>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="item9">
+                <div class="checklist-text">
+                    <label for="item9">Choose curiosity over criticism, especially about yourself</label>
+                    <div class="notes-box" id="notes9">
+                        <h4>My Curiosity Practice:</h4>
+                        <textarea placeholder="When I notice self-criticism about...&#10;&#10;Curious question I'll ask instead:"></textarea>
+                    </div>
+                </div>
+                <button class="notes-btn" onclick="toggleNotes('notes9')">📝 Plan</button>
+            </div>
+            
+            <div class="checklist-item">
+                <input type="checkbox" id="item10">
+                <div class="checklist-text">
+                    <label for="item10">Thank yourself for showing up, no matter how the day went</label>
+                    <div class="notes-box" id="notes10">
+                        <h4>My Gratitude Note:</h4>
+                        <textarea placeholder="Today I appreciate myself for...&#10;&#10;How I showed resilience:"></textarea>
+                    </div>
+                </div>
+                <button class="notes-btn" onclick="toggleNotes('notes10')">📝 Plan</button>
+            </div>
+        </div>
+        
+        <div class="reflection">
+            <h2>Weekly Resilience Review</h2>
+            
+            <div class="section">
+                <h3>Which habit made the biggest difference this week?</h3>
+                <textarea id="habit-reflection" placeholder="The most impactful practice was..."></textarea>
+                
+                <h3>What resilience strength surprised you?</h3>
+                <textarea id="strength-reflection" placeholder="I discovered I'm stronger at..."></textarea>
+                
+                <h3>Next week's resilience focus:</h3>
+                <textarea id="focus-reflection" placeholder="I'll pay special attention to..."></textarea>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <button id="save-btn">Save Progress</button>
+            <button id="print-btn" class="print-btn" onclick="window.print()">Print Checklist</button>
+            <button id="reset-btn" class="reset-btn">Reset Checklist</button>
+        </div>
+        
+        <div class="instructions">
+            <h3>How to Use This Checklist:</h3>
+            <ol>
+                <li><strong>Complete habits</strong> throughout your day (Morning/Daytime/Evening)</li>
+                <li><strong>Click 📝 Plan buttons</strong> to customize each practice</li>
+                <li><strong>Check items</strong> as you complete them</li>
+                <li><strong>Review weekly</strong> to track your resilience growth</li>
+            </ol>
+            <p><em>Remember: Small daily actions build unshakable inner strength.</em></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved data
+            loadProgress();
+            
+            // Update progress when checkboxes change
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateProgress);
+            });
+            
+            // Save button
+            document.getElementById('save-btn').addEventListener('click', saveProgress);
+            
+            // Reset button
+            document.getElementById('reset-btn').addEventListener('click', resetProgress);
+            
+            // Initial progress update
+            updateProgress();
+        });
+        
+        function toggleNotes(id) {
+            const notesBox = document.getElementById(id);
+            notesBox.style.display = notesBox.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+            const progress = (checked.length / checkboxes.length) * 100;
+            
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('progress-bar').textContent = Math.round(progress) + '%';
+            document.getElementById('progress-percent').textContent = Math.round(progress);
+            
+            // Show celebration if all checked
+            document.getElementById('celebration').style.display = 
+                checked.length === checkboxes.length ? 'block' : 'none';
+        }
+        
+        function saveProgress() {
+            const data = {
+                checkboxes: Array.from(document.querySelectorAll('input[type="checkbox"]')).map(cb => cb.checked),
+                notes: Array.from(document.querySelectorAll('.notes-box textarea')).map(ta => ta.value),
+                reflections: {
+                    habit: document.getElementById('habit-reflection').value,
+                    strength: document.getElementById('strength-reflection').value,
+                    focus: document.getElementById('focus-reflection').value
+                }
+            };
+            localStorage.setItem('resilienceChecklist', JSON.stringify(data));
+            alert('Progress saved! Your resilience journey continues.');
+        }
+        
+        function loadProgress() {
+            const saved = JSON.parse(localStorage.getItem('resilienceChecklist'));
+            if (saved) {
+                // Load checkboxes
+                document.querySelectorAll('input[type="checkbox"]').forEach((cb, i) => {
+                    cb.checked = saved.checkboxes[i];
+                });
+                
+                // Load notes
+                document.querySelectorAll('.notes-box textarea').forEach((ta, i) => {
+                    ta.value = saved.notes[i] || '';
+                });
+                
+                // Load reflections
+                document.getElementById('habit-reflection').value = saved.reflections?.habit || '';
+                document.getElementById('strength-reflection').value = saved.reflections?.strength || '';
+                document.getElementById('focus-reflection').value = saved.reflections?.focus || '';
+            }
+        }
+        
+        function resetProgress() {
+            if (confirm('Reset all progress? Your notes will be cleared.')) {
+                localStorage.removeItem('resilienceChecklist');
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
